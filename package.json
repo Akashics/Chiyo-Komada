@@ -1,0 +1,49 @@
+{
+  "name": "chiyo",
+  "version": "0.0.1",
+  "description": "Chiyo, a fun discord bot.",
+  "main": "bot.js",
+  "dependencies": {
+    "axios": "^0.16.2",
+    "body-parser": "^1.17.2",
+    "cheerio": "^1.0.0-rc.2",
+    "discord.js": "^11.1.0",
+    "ejs": "^2.5.7",
+    "express": "^4.15.3",
+    "express-session": "^1.15.4",
+    "fast-html-parser": "^1.0.1",
+    "helmet": "^3.8.1",
+    "highcharts": "^5.0.13",
+    "komada": "^0.20.5",
+    "marked": "^0.3.6",
+    "moment": "^2.18.1",
+    "moment-duration-format": "^1.3.0",
+    "node-opus": "^0.2.6",
+    "passport": "^0.3.2",
+    "passport-discord": "^0.1.2",
+    "raven": "^2.1.0",
+    "request": "^2.81.0",
+    "snekfetch": "^3.2.4",
+    "ytdl-core": "^0.15.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "ch.help"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kashalls/Chiyo.git"
+  },
+  "keywords": [
+    "chiyo",
+    "discord",
+    "bot",
+    "100%"
+  ],
+  "author": "Kashall#1307",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Kashalls/Chiyo/issues"
+  },
+  "homepage": "https://github.com/Kashalls/Chiyo#readme"
+}
