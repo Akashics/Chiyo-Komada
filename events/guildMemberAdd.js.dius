@@ -1,0 +1,14 @@
+exports.run = async (client, member) => {
+    //if (!client.settingGateway.get(member.guild.id).joinMessage) return;
+
+    //console.log(member.user)
+    //console.log('Avatar URL = ' + member.user.avatarURL() || member.user.defaultAvatarURL)
+    if (client.settingGateway.get(member.guild.id).logChannel) {
+        const embed = new client.methods.Embed()
+            .setColor(200 * 256)
+            .setAuthor(`${member.user.username} #${member.user.discriminator} [${member.user.id}]`, member.user.avatarURL())
+            .setTimestamp()
+            .setFooter('Joined', client.user.avatarURL());
+        return client.channels.get(client.settingGateway.get(member.guild.id).logChannel).sendEmbed(embed);
+    }
+}
