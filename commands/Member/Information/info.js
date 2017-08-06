@@ -13,18 +13,16 @@ exports.run = async (client, msg) => {
     `• Servers      :: ${client.guilds.size.toLocaleString()}`,
     `• Channels     :: ${client.channels.size.toLocaleString()}`,
     `• Komada       :: v${komadaVersion}`,
-    `• Discord.js   :: v12.0.0-dev`,
+    `• Discord.js   :: v12.0.0-dev Modified`,
     `• Author       :: Kashall#1307`,
-    ``,
-    `Bot Support    :: https://discord.gg/wQhqGyx`,
-    `Komada Support :: https://discord.gg/gkZCQtH`
+    ``
   ]);
 };
 
 exports.conf = {
   enabled: true,
   runIn: ["text", "dm", "group"],
-  aliases: ["details", "what", ],
+  aliases: ["details", "what", "stats"],
   permLevel: 0,
   botPerms: [],
   requiredFuncs: [],

@@ -1,5 +1,5 @@
 exports.run = async (client, msg, [...args]) => {
-    const keys = require('../../keys.json');
+    const keys = require('../../../keys.json');
     let request = require('request');
     let msgSplit = msg.content.split(' ');
     let msgSearch = '';

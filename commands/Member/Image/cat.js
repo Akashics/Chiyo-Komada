@@ -1,12 +1,8 @@
 exports.run = async (client, msg, [...args]) => {
-    try {
-        const snekfetch = require('snekfetch');
-        let url = 'http://random.cat/meow';
-        let req = await snekfetch.get(url);
-        return msg.channel.send({ files: [`${req.body.file}`] });
-    } catch (e) {
-        Raven.captureException(e);
-    }
+    const snekfetch = require('snekfetch');
+    let url = 'http://random.cat/meow';
+    let req = await snekfetch.get(url);
+    return msg.channel.send({ files: [`${req.body.file}`] });
 
 }
 

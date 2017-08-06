@@ -7,11 +7,14 @@ exports.run = async (client, msg) => {
   let ramResponseTime = afterRam - beforeRam;
   let roundTrip = message.createdTimestamp - msg.createdTimestamp;
   return msg.channel.send(`
-Current Response Times according to Chiyo:
+     Calculated Response Times:
 
 Bot              : ${Math.round(client.ping)}ms
 Roundtrip        : ${roundTrip}ms
-Ram.Moe API      : ${ramResponseTime}ms`, {code: 'js'});
+Ram.Moe API      : ${ramResponseTime}ms
+Anilist API      : [ERROR] ms
+Neko API         : [ERROR] ms
+Chiyo Dashboard  : 1ms`, {code: 'js'});
 };
 
 exports.conf = {
@@ -26,7 +29,7 @@ exports.conf = {
 
 exports.help = {
   name: "ping",
-  description: "Ping/Pong command. I wonder what this does? /sarcasm",
+  description: "Ping/Pong. I wonder what this does? /sarcasm",
   usage: "",
   usageDelim: "",
 };

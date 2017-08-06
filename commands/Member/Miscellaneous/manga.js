@@ -1,7 +1,7 @@
 exports.run = async (client, msg, [...args]) => {
     const keys = require('../../keys.json');
     const axios = require('axios');
-    let searchQuery = msg.content.substring(client.settingGateway.get(msg.guild).prefix.length + exports.help.name.length + 1);
+    let searchQuery = msg.content.substring(client.settings.guilds.get(msg.guild).prefix.length + exports.help.name.length + 1);
     if (!searchQuery) return msg.channel.send(':cloud: | I need a manga to search up.');
     try {
         let authRequest = await axios.post(`https://anilist.co/api/auth/access_token`, {

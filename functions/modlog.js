@@ -28,7 +28,7 @@ exports.createEmbed = (client, author, target, action, reason) => {
 };
 
 exports.post = async (client, guild, content) => {
-    let modLog = guild.channels.get(client.settingGateway.get(guild.id).modLog);
+    let modLog = guild.channels.get(client.settings.guilds.get(guild.id).modLog);
     if (!modLog) throw `:x: A modlog channel has not been setup. This action will not be logged!`;
     if (!content.constructor.name === "MessageEmbed") throw `:x: Settings do not permit embed messages. Please send a normal message instead.`;
 

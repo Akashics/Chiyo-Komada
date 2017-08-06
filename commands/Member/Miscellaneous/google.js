@@ -3,7 +3,7 @@ exports.run = async (client, msg, [...args]) => {
     const snekfetch = require('snekfetch');
     const querystring = require('querystring');
 
-    let searchQuery = msg.content.substring(client.settingGateway.get(msg.guild).prefix.length + exports.help.name.length + 1);
+    let searchQuery = msg.content.substring(client.settings.guilds.get(msg.guild).prefix.length + exports.help.name.length + 1);
     if (!searchQuery) return msg.channel.send(':cloud: | I need something to Google.');
 
     let searchMessage = await msg.reply(':cloud: | Searching...');

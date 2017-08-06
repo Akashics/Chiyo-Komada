@@ -4,7 +4,7 @@ exports.run = (client, guild) => {
   if (guild.available) {
     var guildIconURL;
     if (guild.icon) {
-      guildIconURL = guild.iconURL;
+      guildIconURL = guild.iconURL();
     } else {
       guildIconURL = 'http://i.imgur.com/escBXVB.png';
     }
