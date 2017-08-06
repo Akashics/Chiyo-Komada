@@ -12,9 +12,9 @@ exports.run = async (client, msg) => {
 Bot              : ${Math.round(client.ping)}ms
 Roundtrip        : ${roundTrip}ms
 Ram.Moe API      : ${ramResponseTime}ms
-Anilist API      : [ERROR] ms
-Neko API         : [ERROR] ms
-Chiyo Dashboard  : 1ms`, {code: 'js'});
+Anilist API      : [Not Yet Added] ms
+Neko API         : [Not Yet Added] ms
+Chiyo Dashboard  : [Not Yet Added] ms`, {code: 'asciidocs'});
 };
 
 exports.conf = {
