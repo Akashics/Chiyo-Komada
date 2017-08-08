@@ -10,7 +10,7 @@ exports.createEmbed = (client, author, target, action, reason) => {
     let modLog = guild.channels.get(client.settings.guilds.get(guild.id).modLog);
     if (!modLog) return;
     const embed = new client.methods.Embed();
-    const color = embedTypes.hasOwnProperty(action) ? embedTypes[action] : 0x222222;
+    const color = (embedTypes.hasOwnProperty(action)) ? (embedTypes[action]) : 0x222222;
 
     embed
         .setColor(color)

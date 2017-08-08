@@ -6,7 +6,7 @@ exports.run = async (client, msg, [...args]) => {
     let searchOrig = '';
     for (let i = 1; i < msgSplit.length; i++) {
         if (i === 1) {
-            searchOrig = msgSplit[i];
+            searchOrig = msgSplit[1];
         } else {
             searchOrig = searchOrig + ' ' + msgSplit[i];
         }
@@ -49,7 +49,7 @@ exports.conf = {
 };
 
 exports.help = {
-    name: "ibsafe",
+    name: "iboard",
     description: "Lookup SFW Images on ImageBoard",
     usage: "",
     usageDelim: "",
