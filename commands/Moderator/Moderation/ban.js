@@ -12,7 +12,9 @@ exports.run = async (client, msg, [...args]) => {
         return msg.send(`:x: You cannot ban that user!`);
     }
     let banReason = msg.content.slice(client.settings.guilds.get(msg.guild).prefix.length + exports.help.name.length + 1 + banMember.length + 1);
-    if (!banReason) return msg.send(':x: Please provide a reason to why you are banning ' + banMember);
+    if (!banReason) {
+        return msg.send(':x: Please provide a reason to why you are banning ' + banMember);
+    }
     banMember.ban().then(member => {
         let modLog = guild.channels.get(client.settings.guilds.get(guild.id).modLog);
         if (!modLog) {

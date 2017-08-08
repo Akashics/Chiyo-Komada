@@ -11,13 +11,13 @@ exports.run = async (client, msg) => {
 
   const ani = async () => {
     const first = await now();
-    await req.get('https://anilist.co/')
+    await req.get("https://anilist.co/")
     return (now() - first)
   }
 
   const neko = async () => {
     const first = await now();
-    await req.get('http://catgirls.brussell98.tk/api/random')
+    await req.get("http://catgirls.brussell98.tk/api/random")
     return (now() - first)
   };
 
@@ -36,7 +36,7 @@ Anilist API      :: ${Math.round(b)}ms
 Neko API         :: ${Math.round(c)}ms
 Chiyo Dashboard  :: N/A
 
-Total Calc Time  :: ${Math.round(now() - x)}ms`, { code: 'asciidoc' });
+Total Calc Time  :: ${Math.round(now() - x)}ms`, { code: "asciidoc" });
 
   };
   check()

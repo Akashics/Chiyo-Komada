@@ -14,7 +14,9 @@ exports.run = async (client, msg, [...args]) => {
     let reason;
     console.log(msg.content)
     kickReason = msg.content.slice(client.settings.guilds.get(msg.guild).prefix.length + exports.help.name.length + 1 + kickMember.length + 1);
-    if (!kickReason) return msg.send(':x: Please provide a reason to why you are kicking' + kickMember);
+    if (!kickReason) {
+        return msg.send(':x: Please provide a reason to why you are kicking' + kickMember);
+    }
     kickMember.kick().then(member => {
         let modLog = guild.channels.get(client.settings.guilds.get(guild.id).modLog);
         if (!modLog) {

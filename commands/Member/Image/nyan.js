@@ -9,7 +9,7 @@ exports.run = async (client, msg, [...args]) => {
     } catch (e) {
         Raven.captureException(e);
     }
-}
+};
 
 exports.conf = {
     enabled: true,

@@ -14,8 +14,7 @@ exports.run = async (client, msg) => {
     `• Channels     :: ${client.channels.size.toLocaleString()}`,
     `• Komada       :: v${komadaVersion}`,
     `• Discord.js   :: v12.0.0-dev Modified`,
-    `• Author       :: Kashall#1307`,
-    ``
+    `• Author       :: Kashall#1307`
   ]);
 };
 

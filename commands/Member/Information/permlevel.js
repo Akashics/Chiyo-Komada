@@ -10,22 +10,22 @@ exports.run = async (client, msg, [...args]) => {
 
     switch (total) {
         case 2:
-            final_level = '2 | **Guild Moderator**';
+            final_level = "2 | **Guild Moderator**";
             break;
         case 3:
-            final_level = '3 | **Guild Administrators**';
+            final_level = "3 | **Guild Administrators**";
             break;
         case 4:
-            final_level = '4 | **Guild Owner**';
+            final_level = "4 | **Guild Owner**";
             break;
         case 7:
-            final_level = '7 | **Chiyo Support**';
+            final_level = "7 | **Chiyo Support**";
             break;
         case 10:
-            final_level = '10 | **Bot Owner**';
+            final_level = "10 | **Bot Owner**";
             break;
         default:
-            final_level = '0 | **Guild Member**';
+            final_level = "0 | **Guild Member**";
             break;
     }
     return msg.channel.send(`${msg.author.tag}'s current permission level is ${final_level}.`);
@@ -44,7 +44,7 @@ exports.conf = {
 
 exports.help = {
     name: "permlevel",
-    description: "Check your permission level according to Chiyo",
+    description: "Show off your snazzy permission level!",
     usage: "",
     usageDelim: "",
     extendedHelp: "",
