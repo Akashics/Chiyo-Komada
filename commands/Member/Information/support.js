@@ -1,5 +1,5 @@
 exports.run = async (client, msg, [...args]) => {
-    return msg.send(`Hi @${message.author.id}, if you need support with anything Discord related or with Chiyo, you can ask in Chiyo's Academy. https://discord.gg/wQhqGyx`);
+    return msg.send(`Hi @${msg.author.toString()}, if you need support with anything Discord related or with Chiyo, you can ask in Chiyo's Academy. https://discord.gg/V7whPwb`);
 }
 
 exports.conf = {

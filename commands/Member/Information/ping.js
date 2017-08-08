@@ -1,20 +1,45 @@
 exports.run = async (client, msg) => {
-  const snekfetch = require('snekfetch');
-  const message = await msg.sendMessage('Waiting for all responses...');
-  let beforeRam = Date.now();
-  let req = await snekfetch.get(`http://rra.ram.moe/i/r`);
-  let afterRam = Date.now()
-  let ramResponseTime = afterRam - beforeRam;
-  let roundTrip = message.createdTimestamp - msg.createdTimestamp;
-  return msg.channel.send(`
-     Calculated Response Times:
+  const now = require("performance-now");
+  const req = require("snekfetch");
+  const x = now();
 
-Bot              : ${Math.round(client.ping)}ms
-Roundtrip        : ${roundTrip}ms
-Ram.Moe API      : ${ramResponseTime}ms
-Anilist API      : [Not Yet Added] ms
-Neko API         : [Not Yet Added] ms
-Chiyo Dashboard  : [Not Yet Added] ms`, {code: 'asciidocs'});
+  const ram = async () => {
+    const first = await now();
+    await req.get(`http://rra.ram.moe/i/r`)
+    return (now() - first)
+  }
+
+  const ani = async () => {
+    const first = await now();
+    await req.get('https://anilist.co/')
+    return (now() - first)
+  }
+
+  const neko = async () => {
+    const first = await now();
+    await req.get('http://catgirls.brussell98.tk/api/random')
+    return (now() - first)
+  };
+
+  const check = async () => {
+    const a = await ram();
+    const b = await ani();
+    const c = await neko();
+
+    return msg.channel.send(`
+= Calculated Response Times =
+
+Heart Beat       :: ${Math.round(client.ping)}ms
+
+Ram.Moe API      :: ${Math.round(a)}ms
+Anilist API      :: ${Math.round(b)}ms
+Neko API         :: ${Math.round(c)}ms
+Chiyo Dashboard  :: N/A
+
+Total Calc Time  :: ${Math.round(now() - x)}ms`, { code: 'asciidoc' });
+
+  };
+  check()
 };
 
 exports.conf = {
