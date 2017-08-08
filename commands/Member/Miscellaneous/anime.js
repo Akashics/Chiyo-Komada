@@ -1,64 +1,34 @@
 exports.run = async (client, msg, [...args]) => {
-    const keys = require('../../keys.json');
-    const axios = require('axios');
+    const keys = require("../../keys.json");
+    const axios = require("axios");
     let searchQuery = msg.content.substring(client.setting.get(msg.guild).prefix.length + exports.help.name.length + 1);
-    if (!searchQuery) return await msg.channel.send(':cloud: | I need a anime to query up.');
-    try {
-        let authRequest = await axios.post(`https://anilist.co/api/auth/access_token`, {
-            grant_type: 'client_credentials',
-            client_id: keys.anilist_client,
-            client_secret: keys.anilist_secret
-        });
-        let accessToken = authRequest.data.access_token;
-        let animeRequest = await axios({
-            url: `https://anilist.co/api/anime/search/${encodeURI(searchQuery)}`,
-            params: { access_token: accessToken }
-        });
-        if (animeRequest.data.error) {
-            if (animeRequest.data.error.messages[0] === 'No Results.') {
-                return msg.channel.send(':cloud: | I searched for ' + searchQuery + ' and could not find anything.');
-            }
-        }
-        if (animeRequest.data.length === 1) {
-            let characters = await loadCharacters(animeRequest.data[0].id, accessToken);
-            let embed = buildResponse(msg, animeRequest.data[0], characters);
-            return msg.channel.createMessage(embed);
-        } else if (animeRequest.data.length > 1) {
-            let characters = await loadCharacters(animeRequest.data[0].id, accessToken);
-            let embed = buildResponse(msg, animeRequest.data[0], characters);
-            return msg.channel.send(embed);
-        } else {
-            return msg.channel.send(':cloud: | I searched for ' + searchQuery + ' and could not find anything.');
-        }
-    } catch (e) {
-        console.error(e);
-        await msg.channel.send(':cloud: | An error has occured: '+ e);
-    }
+    if (!searchQuery) return await msg.channel.send(":cloud: | I need a anime to query up.");
+
     async function loadCharacters(id, token) {
         let characterRequest = await axios({
             url: `https://anilist.co/api/anime/${id}/characters`,
             params: { access_token: token }
         });
         return characterRequest.data.characters;
-    }
+    };
 
     function buildResponse(msg, data, characters) {
-        let description = data.description.replace(/<br>/g, '');
-        description = description.replace(/\n|\\n/g, '');
-        description = description.replace(/&mdash;/g, '');
-        description = description.replace(/&#039;/g, '');
-        description = description.split('.').join('.\n');
+        let description = data.description.replace(/<br>/g, "");
+        description = description.replace(/\n|\\n/g, "");
+        description = description.replace(/&mdash;/g, "");
+        description = description.replace(/&#039;/g, "");
+        description = description.split(".").join(".\n");
         if (description.length > 1024) {
             description = description.substring(0, 1020);
-            description += '...';
+            description += "...";
         }
         let mainCharacters = characters.filter((c) => {
-            return c.role === 'Main';
+            return c.role === "Main";
         });
         let characterString = mainCharacters.map(c => {
-            return `[${c.name_first}${c.name_last ? ` ${c.name_last}` : ''}](https://anilist.co/character/${c.id})`
+            return `[${c.name_first}${c.name_last ? ` ${c.name_last}` : ""}](https://anilist.co/character/${c.id})`;
         });
-        characterString = characterString.join(', ');
+        characterString = characterString.join(", ");
         let titleString = data.title_english !== data.title_romaji ? `${data.title_romaji} | ${data.title_english}` : data.title_romaji;
         return {
             embed: {
@@ -75,13 +45,13 @@ exports.run = async (client, msg, [...args]) => {
                 "fields": [
                     {
                         "name": `:movie_camera: Genres`,
-                        "value": `**${data.genres.join(', ')}**`,
-                        "inline": 'true'
+                        "value": `**${data.genres.join(", ")}**`,
+                        "inline": "true"
                     },
                     {
                         "name": `:1234: # of Episodes`,
                         "value": `**${data.total_episodes > 0 ? data.total_episodes : `Unknown`}**`,
-                        "inline": 'true'
+                        "inline": "true"
                     },
                     {
                         "name": `:man_dancing: Characters`,
@@ -91,7 +61,39 @@ exports.run = async (client, msg, [...args]) => {
             }
         };
     }
-}
+
+    try {
+        let authRequest = await axios.post(`https://anilist.co/api/auth/access_token`, {
+            grant_type: "client_credentials",
+            client_id: keys.anilist_client,
+            client_secret: keys.anilist_secret
+        });
+        let accessToken = authRequest.data.access_token;
+        let animeRequest = await axios({
+            url: `https://anilist.co/api/anime/search/${encodeURI(searchQuery)}`,
+            params: { access_token: accessToken }
+        });
+        if (animeRequest.data.error) {
+            if (animeRequest.data.error.messages[0] === "No Results.") {
+                return msg.channel.send(":cloud: | I searched for " + searchQuery + " and could not find anything.");
+            }
+        }
+        if (animeRequest.data.length === 1) {
+            let characters = await loadCharacters(animeRequest.data[0].id, accessToken);
+            let embed = buildResponse(msg, animeRequest.data[0], characters);
+            return msg.channel.createMessage(embed);
+        } else if (animeRequest.data.length > 1) {
+            let characters = await loadCharacters(animeRequest.data[0].id, accessToken);
+            let embed = buildResponse(msg, animeRequest.data[0], characters);
+            return msg.channel.send(embed);
+        } else {
+            return msg.channel.send(":cloud: | I searched for " + searchQuery + " and could not find anything.");
+        }
+    } catch (e) {
+        console.error(e);
+        await msg.channel.send(":cloud: | An error has occured: " + e);
+    }
+};
 
 exports.conf = {
     enabled: true,
