@@ -21,7 +21,7 @@ exports.run = async (client, msg, [...args]) => {
         if (error) {
             return msg.send(':cloud: | An error has occured: ' + error);
         }
-        if (!error && response.statusCode == 200) {
+        if (!error && response.statusCode === 200) {
             try {
                 body = JSON.parse(body);
             } catch (e) {
