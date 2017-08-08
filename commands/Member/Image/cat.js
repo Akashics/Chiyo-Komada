@@ -1,10 +1,8 @@
 exports.run = async (client, msg, [...args]) => {
-    const snekfetch = require('snekfetch');
-    let url = 'http://random.cat/meow';
-    let req = await snekfetch.get(url);
+    const snekfetch = require("snekfetch");
+    let req = await snekfetch.get("http://random.cat/meow");
     return msg.channel.send({ files: [`${req.body.file}`] });
-
-}
+};
 
 exports.conf = {
     enabled: true,

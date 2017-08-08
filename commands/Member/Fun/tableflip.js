@@ -1,5 +1,5 @@
 exports.run = async (client, msg, [...args]) => {
-    return msg.send('(╯°□°）╯︵ ┻━┻')
+    return msg.send("(╯°□°）╯︵ ┻━┻")
 
 };
 

@@ -2,11 +2,11 @@ exports.run = async (client, msg, [...args]) => {
     let rand = 1 + Math.floor(Math.random() * 100);
         let result;
         if (rand > 50) {
-            result = 'Heads';
+            result = "Heads";
         } else {
-            result = 'Tails';
+            result = "Tails";
         }
-        return msg.send('<:coin:338772726712107008>' + ` | Your result is ${result}.`);
+        return msg.send("<:coin:338772726712107008>" + ` | Your result is ${result}.`);
 }
 
 exports.conf = {
