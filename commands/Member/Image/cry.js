@@ -2,7 +2,7 @@ exports.run = async (client, msg) => {
 
 	const axios = require('axios');
 	let req = await axios.get(`https://rra.ram.moe/i/r?type=${exports.help.name}`);
-	let path = req.body.path.replace('/i/', '');
+	let path = req.data.path.replace('/i/', '');
 	return msg.channel.send({ files: [`https://cdn.ram.moe/${path}`] });
 };
 

@@ -1,13 +1,13 @@
 exports.run = async (client, msg) => {
-	const snekfetch = require('snekfetch');
-	let req = await snekfetch.get('http://random.cat/meow');
-	return msg.channel.send({ files: [`${req.body.file}`] });
+	const axios = require('axios');
+	let req = await axios.get('http://random.cat/meow');
+	return msg.channel.send({ files: [`${req.data.file}`] });
 };
 
 exports.conf = {
 	enabled: true,
 	runIn: ['text'],
-	aliases: [],
+	aliases: ['cats', 'gimmecats'],
 	permLevel: 0,
 	botPerms: [],
 	requiredFuncs: [],
