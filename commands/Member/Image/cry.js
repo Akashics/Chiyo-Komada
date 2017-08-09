@@ -1,7 +1,7 @@
 exports.run = async (client, msg) => {
 
-	const snekfetch = require('snekfetch');
-	let req = await snekfetch.get(`https://rra.ram.moe/i/r?type=${exports.help.name}`);
+	const axios = require('axios');
+	let req = await axios.get(`https://rra.ram.moe/i/r?type=${exports.help.name}`);
 	let path = req.body.path.replace('/i/', '');
 	return msg.channel.send({ files: [`https://cdn.ram.moe/${path}`] });
 };
