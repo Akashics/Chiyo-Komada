@@ -24,6 +24,7 @@ exports.run = (client, guild) => {
 			break;
 
 		}
+		
 		var guildFilter;
 		switch (guild.explicitContentFilter) {
 		case 0:
@@ -40,19 +41,12 @@ exports.run = (client, guild) => {
 			break;
 		}
 
-		var guildIconURL;
-		if (guild.icon) {
-			guildIconURL = guild.iconURL();
-		} else {
-			guildIconURL = 'http://i.imgur.com/escBXVB.png';
-		}
-
 		const embed = new client.methods.Embed()
 			.setTitle('Added to a New Guild!')
-			.setAuthor(`${guild.name} -`, `${guildIconURL}`)
+			.setAuthor(`${guild.name} -`, (guild.iconURL() || 'http://i.imgur.com/escBXVB.png'))
 			.setColor(0x0AC120)
 			.setFooter('', 'http://i.imgur.com/w1vhFSR.png')
-			.setThumbnail(`${guildIconURL}`)
+			.setThumbnail(guild.iconURL() || 'http://i.imgur.com/escBXVB.png')
 			.setTimestamp()
 			.setURL('https://chiyo.ml')
 			.addField('**Guild Name**', `${guild.name}`, true)
