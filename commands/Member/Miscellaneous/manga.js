@@ -81,7 +81,7 @@ exports.run = async (client, msg) => {
 						'inline': 'true'
 					},
 					{
-						'name': ':1234: # of Characters',
+						'name': ':1234: # of Chapters',
 						'value': `**${data.total_chapters > 0 ? data.total_chapters : 'Unknown'}**`,
 						'inline': 'true'
 					},
