@@ -3,7 +3,7 @@ exports.run = async (client, msg, args) => {
 	if (args[0]) {
 		let image = args[0];
 		if (image == 'types') {
-			return msg.send('List types here.');
+			return msg.send(':comet: **Valid Image Types:** \n`awoo, bang, blush, clagwimoth, cry, cuddle, dance, hug, insult, jojo, kiss, lewd, lick, megumin, neko, nom, owo, pat, poke, pout, rem, shrug, slap, sleepy, smile, teehee, smug, stare, thumbsup, triggered, wag, waifu_insult, wasted`');
 		} else {
 			const types = ['awoo','bang','blush','clagwimoth','cry','cuddle','dance','hug','insult','jojo','kiss','lewd','lick','megumin','neko','nom','owo','pat','poke','pout','rem','shrug','slap','sleepy','smile','teehee','smug','stare','thumbsup','triggered','wag','waifu_insult','wasted'];
 			if (!types.includes(image)) return msg.send(':x: Use `' + client.settings.guilds.get(msg.guild).prefix + 'moe types` to see the correct image types.');
