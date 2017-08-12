@@ -1,21 +1,12 @@
 exports.run = async (client, msg) => {
 
-	if (!msg.member.hasPermission('KICK_MEMBERS')) return;
-	if (!msg.guild.member(client.user).hasPermission('KICK_MEMBERS')) {
-		return msg.reply(':x: I don\'t have the permissions (KICK_MEMBER) to do this.');
+	if (msg.mentions.users.size === 0 || msg.mentions.users.size <= 2) {
+		return msg.send(':x: Please specify a user to kick.');
 	}
-	if (msg.mentions.users.size === 0) {
-		return msg.send(':x: There is no user to kick!');
-	}
-    
 	let kickMember = msg.guild.member(msg.mentions.users.first());
-	if (!kickMember) {
-		return msg.send(':x: You cannot kick that user!');
-	}
-    
 	let kickReason = msg.content.slice(client.settings.guilds.get(msg.guild).prefix.length + exports.help.name.length + 1 + kickMember.length + 1);
 	if (!kickReason) {
-		return msg.send(':x: Please provide a reason to why you are kicking' + kickMember);
+		return msg.send(':x: Please provide a reason to why you are kicking ' + kickMember);
 	}
     
 	kickMember.kick().then(member => {

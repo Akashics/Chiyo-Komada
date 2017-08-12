@@ -4,7 +4,9 @@ exports.run = async (client, msg) => {
 	const querystring = require('querystring');
 
 	let searchQuery = msg.content.substring(client.settings.guilds.get(msg.guild).prefix.length + exports.help.name.length + 1);
-	if (!searchQuery) return msg.channel.send(':cloud: I need something to Google.');
+	if (!searchQuery) {
+		return msg.channel.send(':cloud: I need something to Google.');
+	}
 
 	let searchMessage = await msg.reply(':cloud: Searching...');
 	let searchUrl = `https://www.google.com/search?q=${encodeURIComponent(searchQuery)}`;

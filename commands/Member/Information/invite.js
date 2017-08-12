@@ -1,5 +1,4 @@
 exports.run = async (client, msg) => {
-	if (!client.user.bot) return msg.reply('Why would you need an invite link for a selfbot...');
 
 	return msg.sendMessage([
 		`To add ${client.user.username} to your discord guild:`,

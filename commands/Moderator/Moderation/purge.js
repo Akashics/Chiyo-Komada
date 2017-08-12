@@ -1,8 +1,18 @@
-exports.run = async (client, msg, [user = client.user, amount]) => {
-	let messages = await msg.channel.fetchMessages({ limit: amount });
-	//messages = messages.filter(m => m.author.id === user.id);
-	if (client.config.selfbot) return messages.forEach(m => m.delete().catch((e) => { throw new Error(e); }));
-	return msg.channel.bulkDelete(messages);
+exports.run = async (client, msg, [user, count]) => {
+	let messages = await msg.channel.fetchMessages({ limit: 100 });
+	if (user && user !== 'everyone') {
+		messages = messages.filter(m => m.author.id === user.id);
+	} else if (!user) {
+		messages = messages.filter(m => m.author.id === client.user.id);
+	}
+	msg.channel.send(`Sucessfully removed: ${messages.array().slice(0, count).filter(m => m.deletable).map(m => m.delete()).length} message(s) from ${user || client.user.username}`);
+};
+
+exports.help = {
+	name: 'prune',
+	description: 'Prunes a mentioned user, the bot, or everyone.',
+	usage: '[user:user|everyone:literal] <count:integer>',
+	usageDelim: ' ',
 };
 
 exports.conf = {
@@ -14,12 +24,4 @@ exports.conf = {
 	botPerms: ['MANAGE_MESSAGES'],
 	requiredFuncs: [],
 	requiredModules: [],
-};
-
-exports.help = {
-	name: 'purge',
-	description: 'This will remove X amount of messages sent in a channel, or by Y user.',
-	usage: '[user:mention] <amount:int{2,100}>',
-	usageDelim: ' ',
-	type: 'commands',
 };
