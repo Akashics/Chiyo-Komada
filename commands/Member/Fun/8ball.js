@@ -1,7 +1,7 @@
 exports.run = async (client, msg) => {
 
 	const responses = ['Yes', 'No', 'Maybe', 'Okay', 'Sure', 'that you should ask me later', 'naw'];
-	msg.send(`:8ball: | I think ${responses[Math.floor(Math.random() * responses.length)]}.`);
+	msg.send(`:8ball: I think ${responses[Math.floor(Math.random() * responses.length)]}.`);
 };
 
 exports.conf = {
