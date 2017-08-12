@@ -1,5 +1,4 @@
 exports.run = async (client, msg, args) => {
-	/* eslint-disable no-console */
 	if (args[0]) {
 		let image = args[0];
 		if (image == 'types') {

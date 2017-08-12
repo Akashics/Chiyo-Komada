@@ -1,9 +1,0 @@
-exports.run = (client, member) => {
-        if (client.settings.guilds.get(member.guild).leaveMessage) {
-            let user = member.user.username;
-            console.log(user)
-            let guild = member.guild.name;
-            console.log(guild)
-            return member.guild.defaultChannel.send(`${client.settings.guilds.get(member.guild).leaveMessage}`);
-        }
-}
