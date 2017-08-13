@@ -22,7 +22,7 @@ exports.conf = {
 };
 
 exports.help = {
-	name: 'trumpquote',
+	name: 'trump',
 	description: 'He said something about missing emails?..',
 	usage: '',
 	usageDelim: '',
