@@ -4,7 +4,7 @@ exports.run = (client, guild) => {
 	if (guild.available) {
 
 		const embed = new client.methods.Embed()
-			.setTitle('Added to a New Guild!')
+			.setTitle('Chiyo was removed from a guild.')
 			.setAuthor(`${guild.name} -`, (guild.iconURL() || 'http://i.imgur.com/escBXVB.png'))
 			.setColor(0xCC0000)
 			.setFooter('', 'http://i.imgur.com/w1vhFSR.png')

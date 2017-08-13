@@ -17,7 +17,7 @@ exports.run = (client, guild) => {
 		];
 
 		const embed = new client.methods.Embed()
-			.setTitle('Added to a New Guild!')
+			.setTitle('Chiyo was added to a guild!')
 			.setAuthor(`${guild.name} -`, (guild.iconURL() || 'http://i.imgur.com/escBXVB.png'))
 			.setColor(0x0AC120)
 			.setFooter('', 'http://i.imgur.com/w1vhFSR.png')
