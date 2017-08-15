@@ -4,7 +4,7 @@ const Raven = require('raven');
 
 const clk = new chalk.constructor({ enabled: true });
 
-/* eslint-disable no-use-before-define */
+/* eslint-disable no-use-before-define no-console*/
 exports.run = (client, data, type = 'log') => {
 	type = type.toLowerCase();
 

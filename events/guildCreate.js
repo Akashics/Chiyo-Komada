@@ -1,6 +1,4 @@
 exports.run = (client, guild) => {
-	const keys = require('../keys.json');
-	client.user.setGame(`${keys.botInfo.prefix}help || ${client.guilds.size} guilds`);
 	if (guild.available) {
 
 		const guildFilter = [

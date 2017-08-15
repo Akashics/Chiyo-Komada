@@ -1,8 +1,5 @@
 exports.run = (client, guild) => {
-	const keys = require('../keys.json');
-	client.user.setGame(`${keys.botInfo.prefix}help || ${client.guilds.size} guilds`);
 	if (guild.available) {
-
 		const moment = require('moment');
 		require('moment-duration-format');
 		const day = moment(Date.now()).format('MM-DD-YYYY HH:mm a');
