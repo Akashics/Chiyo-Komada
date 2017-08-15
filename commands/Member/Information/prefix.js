@@ -1,6 +1,6 @@
 exports.run = async (client, msg) => {
-
-	return msg.sendMessage(msg.guild.name + '\'s has set their prefix to ' + msg.guild.settings.modLog + ' or you can mention ' + client.user.toString());
+	let prefix = await msg.guild.settings.prefix;
+	return msg.sendMessage('_' + msg.guild.name + '_' + ' has set their prefix to `' + prefix + '` or you can mention ' + client.user.toString() + ' with a command after it.');
 };
 
 exports.conf = {
@@ -14,7 +14,7 @@ exports.conf = {
 };
 
 exports.help = {
-	name: 'whatsmyprefix',
+	name: 'prefix',
 	description: 'Don\'t know the current guilds prefix?',
 	usage: '',
 	usageDelim: '',
