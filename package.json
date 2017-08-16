@@ -1,7 +1,7 @@
 {
   "name": "chiyo",
-  "version": "0.0.1",
-  "description": "Chiyo, a fun discord bot.",
+  "version": "0.20.7",
+  "description": "Chiyo, a discord bot, for now.",
   "main": "bot.js",
   "dependencies": {
     "axios": "^0.16.2",
