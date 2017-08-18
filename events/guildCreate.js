@@ -1,17 +1,19 @@
 exports.run = (client, guild) => {
 	if (guild.available) {
-
+		//Lets update the listings!
+		client.funcs.discordListUpdate.update(client);
+		//Start GuildLog Embed...
 		const guildFilter = [
-			'Don\'t scan anything',
-			'Roles bypass',
-			'Scan everyone'
+			'Living on the Edge',
+			'Role Bypasses Filter',
+			'Scanning Everyone'
 		];
 		const guildVerification = [
-			'Unrestricted',
-			'Low, Verified Email',
-			'Medium, Registered 5+ Minutes',
-			'(╯°□°）╯︵ ┻━┻, Member for 10+ Minutes',
-			'┻━┻︵ヽ(`Д´)ﾉ︵┻━┻, Needs Verified Phone'
+			'Unrestricted - Edgy?',
+			'Low - Verified Email',
+			'Medium - Registered 5+ Minutes',
+			'(╯°□°）╯︵ ┻━┻ - Member for 10+ Minutes',
+			'┻━┻︵ヽ(`Д´)ﾉ︵┻━┻ - Needs Verified Phone'
 		];
 		const moment = require('moment');
 		require('moment-duration-format');

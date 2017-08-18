@@ -7,7 +7,8 @@ exports.searchVideo = async (msg, query, callback) => {
 			const json = JSON.parse(body);
 			callback(json.items[0].id.videoId);
 		} catch (e) {
-			callback(null);
+			return msg.reply('There was an error finding that song');
+			callback(null);	
 		}
 	});
 

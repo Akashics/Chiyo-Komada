@@ -3,6 +3,12 @@ exports.run = async (client, msg) => {
 	let song = msg.content.slice(client.settings.guilds.get(msg.guild).prefix.length + 5);
 	if (!song) return msg.reply('Sorry, There was no song was provided. Please provide a song or link to play.');
 	let guild = client.music[msg.guild.id];
+	if (!guild) guild = client.music[msg.guild.id] = {
+		queue: [],
+		skippers: [],
+		skipReq: 0,
+		isPlaying: false
+	};
 	if (guild.isPlaying) {
 		client.funcs.musichandler.getID(song, id => {
 			if (!id) return msg.reply('I am unable to extract that video. Please try again later.');
@@ -37,7 +43,7 @@ exports.run = async (client, msg) => {
 };
 
 exports.conf = {
-	enabled: true,
+	enabled: false,
 	runIn: ['text'],
 	aliases: [],
 	permLevel: 0,

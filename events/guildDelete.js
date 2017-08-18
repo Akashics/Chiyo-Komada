@@ -1,5 +1,7 @@
 exports.run = (client, guild) => {
 	if (guild.available) {
+		//Lets update the listings!
+		client.funcs.discordListUpdate.update(client);
 		const moment = require('moment');
 		require('moment-duration-format');
 		const day = moment(Date.now()).format('MM-DD-YYYY HH:mm a');

@@ -15,10 +15,10 @@ class KashallisStoopid extends Client {
 }
 
 const client = new KashallisStoopid({
-	ownerID: keys.ownerID,
+	ownerID: keys.botInfo.botOwnerID,
 	prefix: keys.botInfo.prefix,
 	cmdPrompt: true,
 	cmdEditing: true
 });
 
-client.login(keys.botInfo.token);
+client.login(keys.botInfo.botToken);
