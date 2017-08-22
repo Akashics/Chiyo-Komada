@@ -1,5 +1,5 @@
 exports.run = async (client, msg) => {
-	msg.send('¯\\_(ツ)_/¯');
+	return msg.send('¯\\_(ツ)_/¯');
 };
 
 exports.conf = {

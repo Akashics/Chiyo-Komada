@@ -1,4 +1,4 @@
-exports.searchVideo = async (msg, query, callback) => {
+exports.searchVideo = async (query, callback) => {
 	const request = require('request');
 	const keys = require('../keys.json');
 	request('https://www.googleapis.com/youtube/v3/search?part=id&type=video&q=' + encodeURIComponent(query) + '&key=' + keys.yt_API_Key, (error, response, body) => {
