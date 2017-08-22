@@ -1,21 +1,17 @@
 exports.update = (client) => {
     const keys = require('../keys.json');
-    if (keys.discordBotsORGAPIKey) {
-        const snekfetch = require('snekfetch')
+    if (keys.discordListings.enabled) {
+        const snekfetch = require('snekfetch');
         snekfetch.post(`https://discordbots.org/api/bots/${client.user.id}/stats`)
-          .set('Authorization', `${keys.discordBotsORGAPIKey}`)
+          .set('Authorization', `${keys.discordListings.discordBotsOrg}`)
           .send({ server_count: client.guilds.size })
-          .then(console.debug('Updating discordbots.org Server Listing (' + client.guilds.size + ')'))
-          .catch(e => console.warn('discordbots.org went offline, please mention Oliy.'));
+          .then(console.log(`✔ Updated discordbots.org listing to ${client.guilds.size}...`))
+          .catch(e => console.warn('✘ DiscordBots.org responded with: ' + e));
 
-    }
-    if (keys.discordBotsPWAPIKey) {
-        const snekfetch = require('snekfetch')
         snekfetch.post(`https://bots.discord.pw/api/bots/${client.user.id}/stats`)
-          .set('Authorization', `${keys.discordBotsPWAPIKey}`)
+          .set('Authorization', `${keys.discordListings.discordBotsPW}`)
           .send({ server_count: client.guilds.size })
-          .then(console.debug('Updated bots.discord.pw Server Listing (' + client.guilds.size + ')'))
-          .catch(e => console.warn('bots.discord.pw went offline, /shrug.'));
-
+          .then(console.log(`✔ Updated discord.pw listing to ${client.guilds.size}...`))
+          .catch(e => console.warn('✘ Discord.pw responded with: ' + e));
     }
 }
