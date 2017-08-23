@@ -12,7 +12,7 @@ exports.run = async (client, msg, args) => {
 			let imageRequest = await axios.get(`https://staging.weeb.sh/images/random?type=${image}`, { headers: { Authorization: AuthStr } });
 			return msg.channel.send({ files: [{ attachment: imageRequest.data.url, name: `${imageRequest.data.id}.${imageRequest.data.fileType}` }] });
 		}
-	} else return msg.send(':x: Please check ' + `\`${client.settings.guilds.get(msg.guild).prefix}help moe \`` + 'to see possible image genre\'s.');
+	} else return msg.send(':x: Please check ' + `\`${client.settings.guilds.get(msg.guild).prefix}moe types \`` + 'to see possible image genre\'s.');
 };
 
 exports.conf = {

@@ -16,7 +16,7 @@ exports.conf = {
 
 exports.help = {
 	name: 'dog',
-	description: 'Must not be a cat person, huh?',
+	description: 'Grabs a random dog image from the interwebs.',
 	usage: '',
 	usageDelim: '',
 	extendedHelp: '',

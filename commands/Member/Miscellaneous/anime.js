@@ -7,8 +7,8 @@ exports.run = async (client, msg) => {
 
 	let authRequest = await axios.post('https://anilist.co/api/auth/access_token', {
 		grant_type: 'client_credentials',
-		client_id: keys.anilist_client,
-		client_secret: keys.anilist_secret
+		client_id: keys.anilistClient,
+		client_secret: keys.anilistSecret
 	});
 	let accessToken = authRequest.data.access_token;
 	let animeRequest = await axios({

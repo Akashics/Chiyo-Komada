@@ -7,7 +7,7 @@ exports.run = async (client, msg) => {
 	const downdoot = root.querySelector('.vote-down');
 	const updoot = root.querySelector('.vote-up');
 	const embed = new client.methods.Embed()
-		.setTitle(`Requested by: ${msg.author.username}`)
+		.setTitle(`Requested by ${msg.author.tag}`)
 		.setAuthor('FML Stories')
 		.setColor(msg.guild.member(client.user.id).highestRole.color || 0)
 		.setTimestamp()

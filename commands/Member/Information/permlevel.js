@@ -38,7 +38,7 @@ exports.conf = {
 	aliases: [],
 	permLevel: 0,
 	botPerms: [],
-	requiredFuncs: [],
+	requiredFuncs: ['checkPerms'],
 	cooldown: 3,
 };
 

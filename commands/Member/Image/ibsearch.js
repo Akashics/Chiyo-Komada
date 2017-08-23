@@ -36,7 +36,7 @@ exports.conf = {
 };
 
 exports.help = {
-	name: 'iboard',
+	name: 'ibsearch',
 	description: 'Lookup SFW Images on ImageBoard',
 	usage: '',
 	usageDelim: '',
