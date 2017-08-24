@@ -1,21 +1,12 @@
 exports.run = async (client, msg) => {
 
-	return msg.sendMessage([
-		`To add ${client.user.username} to your discord guild:`,
-		client.invite,
-		[
-			'```The above link is generated requesting the minimum permissions required to use every command currently.',
-			'I know not all permissions are right for every server, so don\'t be afraid to uncheck any of the boxes.',
-			'If you try to use a command that requires more permissions than the bot is granted, it will let you know.```',
-		].join(' '),
-		'Please file an issue at <https://github.com/Kashalls/Chiyo> if you find any bugs.',
-	]);
+	return msg.sendMessage(`Hi ${msg.author.toString()}, \n\nYou can invite Chiyo to your guild using: <https://chiyo.ml/invite>\nYou can also join our Support Guild by going to <https://chiyo.ml/support>\nThank you for supporting Chiyo's community growth.`);
 };
 
 exports.conf = {
 	enabled: true,
 	runIn: ['text'],
-	aliases: [],
+	aliases: ['support'],
 	permLevel: 0,
 	botPerms: [],
 	requiredFuncs: [],
@@ -24,7 +15,7 @@ exports.conf = {
 
 exports.help = {
 	name: 'invite',
-	description: 'Displays the join server link of the bot.',
+	description: 'Invite Chiyo to or join the Support Guild',
 	usage: '',
 	usageDelim: '',
 };

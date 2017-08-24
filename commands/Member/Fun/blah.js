@@ -1,7 +1,7 @@
 exports.run = async (client, msg) => {
-	return msg.send(`Hi @${msg.author.toString()}, if you need support with anything Discord related or with Chiyo, you can ask in Chiyo's Academy. https://discord.gg/V7whPwb`);
+	return msg.send(`Blah to you too, ${msg.author.toString()}.`);
 };
-
+    
 exports.conf = {
 	enabled: true,
 	runIn: ['text'],
@@ -11,10 +11,10 @@ exports.conf = {
 	requiredFuncs: [],
 	cooldown: 3,
 };
-
+    
 exports.help = {
-	name: 'support',
-	description: 'So you need some help.',
+	name: 'blah',
+	description: 'Blah to you too :3',
 	usage: '',
 	usageDelim: '',
 	extendedHelp: '',

@@ -1,13 +1,13 @@
 exports.run = async (client, msg) => {
 	const axios = require('axios');
-	let req = await axios.get('http://random.cat/meow');
-	return msg.channel.send({ files: [`${req.data.file}`] });
+	let req = await axios.get('http://random.dog/woof');
+	return msg.channel.send({ files: [`http://random.dog/${req.data}`] });
 };
 
 exports.conf = {
 	enabled: true,
 	runIn: ['text'],
-	aliases: ['cats', 'gimmecats'],
+	aliases: ['dog'],
 	permLevel: 0,
 	botPerms: [],
 	requiredFuncs: [],
@@ -15,8 +15,8 @@ exports.conf = {
 };
 
 exports.help = {
-	name: 'cat',
-	description: 'You wanted a cat, right? This command is for you.',
+	name: 'randomdog',
+	description: 'Grabs a random dog image from the interwebs.',
 	usage: '',
 	usageDelim: '',
 	extendedHelp: '',
