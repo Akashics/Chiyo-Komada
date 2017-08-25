@@ -11,6 +11,7 @@
     "express": "^4.15.4",
     "express-session": "^1.15.5",
     "fast-html-parser": "^1.0.1",
+    "flipacoin": "^1.0.0",
     "get-youtube-id": "^1.0.0",
     "helmet": "^3.8.1",
     "komada": "github:dirigeants/komada",
