@@ -1,24 +1,24 @@
 exports.run = async (client, msg, args) => {
 	const choices = ['paper', 'rock', 'scissors'];
-	if (args.toLowerCase() != choices) {
-		return msg.send('You can only choose: `Rock, Paper or Scissors`.');
+	if (!choices.includes(args[0])) {
+		return msg.send('You can only choose: `rock, paper or scissors`.');
 	}
-	const { choice } = args[0];
+	const choice = args[0];
 	const response = choices[Math.floor(Math.random() * choices.length)];
 	if (choice === 'rock') {
-		if (response === 'rock') return msg.say('Rock! Aw... A tie...');
-		else if (response === 'paper') return msg.say('Paper! Yes! I win!');
-		else if (response === 'scissors') return msg.say('Scissors! Aw... I lose...');
+		if (response === 'rock') return msg.send('Rock! Aw... A tie...');
+		else if (response === 'paper') return msg.send('Paper! Yes! I win!');
+		else if (response === 'scissors') return msg.send('Scissors! Aw... I lose...');
 	} else if (choice === 'paper') {
-		if (response === 'rock') return msg.say('Rock! Aw... I lose...');
-		else if (response === 'paper') return msg.say('Paper! Aw... A tie...');
-		else if (response === 'scissors') return msg.say('Scissors! Yes! I win!');
+		if (response === 'rock') return msg.send('Rock! Aw... I lose...');
+		else if (response === 'paper') return msg.send('Paper! Aw... A tie...');
+		else if (response === 'scissors') return msg.send('Scissors! Yes! I win!');
 	} else if (choice === 'scissors') {
-		if (response === 'rock') return msg.say('Rock! Yes! I win!');
-		else if (response === 'paper') return msg.say('Paper! Aw... I lose...');
-		else if (response === 'scissors') return msg.say('Scissors! Aw... A tie...');
+		if (response === 'rock') return msg.send('Rock! Yes! I win!');
+		else if (response === 'paper') return msg.send('Paper! Aw... I lose...');
+		else if (response === 'scissors') return msg.send('Scissors! Aw... A tie...');
 	} else {
-		return msg.say('I win by default, you little cheater.');
+		return msg.send('I win by default, you little cheater.');
 	}
     
 };
