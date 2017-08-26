@@ -2,20 +2,21 @@ exports.run = async (client, msg, args) => {
 
 	const keys = require('../../../keys.json');
 	const snekfetch = require('snekfetch');
-	const { query } = args;
-	const { body } = await snekfetch
+	const query = args;
+	const request = await snekfetch
 		.get('http://api.giphy.com/v1/gifs/search')
 		.query({
 			q: query,
 			api_key: keys.giphyKey,
-			rating: msg.channel.nsfw ? 'r' : 'pg'
+			rating: msg.channel.nsfw ? 'r' : 'pg',
+			limit: 5
 		});
-	if (!body.data.length) return msg.say(':x: No results were found.');
-	return msg.send(body.data[Math.floor(Math.random() * body.data.length)].images.original.url);
+	if (!request.body.data.length) return msg.send(':x: No results were found.');
+	return msg.send(request.body.data[Math.floor(Math.random() * request.body.data.length)].images.original.url);
 };
 
 exports.conf = {
-	enabled: false,
+	enabled: true,
 	runIn: ['text'],
 	aliases: [],
 	permLevel: 0,
