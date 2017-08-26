@@ -17,7 +17,7 @@ exports.conf = {
 exports.help = {
 	name: '8ball',
 	description: 'What did you expect me to say?',
-	usage: '',
+	usage: '<question:string>',
 	usageDelim: '',
 	extendedHelp: '',
 }; 
