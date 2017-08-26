@@ -1,7 +1,7 @@
 exports.run = async (client, msg) => {
 	const lottery = Math.floor(Math.random() * 100) + 1;
-	if (lottery === 1) return msg.reply('Wow! You actually won! Great job!');
-	return msg.reply('Nope, sorry, you lost.');
+	if (lottery === 1) return msg.reply('Wow! You had a 1 in 100 chance! Great job!');
+	return msg.send(`Sorry ${msg.author.toString()}, you didn't win.`);
 };
 
 exports.conf = {
@@ -11,7 +11,7 @@ exports.conf = {
 	permLevel: 0,
 	botPerms: ['SEND_MESSAGES'],
 	requiredFuncs: [],
-	cooldown: 3,
+	cooldown: 10,
 };
 
 exports.help = {
