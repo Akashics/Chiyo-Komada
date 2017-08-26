@@ -16,7 +16,7 @@ exports.conf = {
 
 exports.help = {
 	name: 'fishy',
-	description: 'Catches a fish.',
+	description: 'Seems fishy :/',
 	usage: '',
 	usageDelim: '',
 	extendedHelp: '',
