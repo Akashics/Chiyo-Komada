@@ -1,17 +1,19 @@
-exports.run = async (client, msg, [user, count]) => {
-	let messages = await msg.channel.fetchMessages({ limit: 100 });
-	if (user && user !== 'everyone') {
-		messages = messages.filter(m => m.author.id === user.id);
-	} else if (!user) {
-		messages = messages.filter(m => m.author.id === client.user.id);
+exports.run = async (client, msg, args) => {
+	if (count > 100 && count < 0) return msg.send('You need to provide a value between 1 and 99.')
+	const { count } = args;
+	try {
+		const messages = await msg.channel.fetchMessages({ limit: count + 1 });
+		await msg.channel.bulkDelete(messages, true);
+		return null;
+	} catch (err) {
+		return msg.send('There are no messages younger than two weeks that can be deleted.');
 	}
-	msg.channel.send(`Sucessfully removed: ${messages.array().slice(0, count).filter(m => m.deletable).map(m => m.delete()).length} message(s) from ${user || client.user.username}`);
 };
 
 exports.help = {
 	name: 'prune',
-	description: 'Prunes a mentioned user, the bot, or everyone.',
-	usage: '[user:user|everyone:literal] <count:integer>',
+	description: 'Deletes up to 99 messages from the current channel.',
+	usage: '<count:integer>',
 	usageDelim: ' ',
 };
 
@@ -21,7 +23,7 @@ exports.conf = {
 	selfbot: false,
 	aliases: [],
 	permLevel: 2,
-	botPerms: ['MANAGE_MESSAGES'],
+	botPerms: ['MANAGE_MESSAGES', 'READ_MESSAGE_HISTORY'],
 	requiredFuncs: [],
 	requiredModules: [],
 };
