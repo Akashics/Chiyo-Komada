@@ -3,7 +3,7 @@ exports.run = async (client, msg) => {
 	const axios = require('axios');
 
 	let searchQuery = msg.content.substring(client.settings.guilds.get(msg.guild).prefix.length + exports.help.name.length + 1);
-	if (!searchQuery) return msg.channel.send(':cloud: I need a manga to search up.');
+	if (!searchQuery) return msg.send(':cloud: I need a manga to search up.');
 
 	let authRequest = await axios.post('https://anilist.co/api/auth/access_token', {
 		grant_type: 'client_credentials',
@@ -17,77 +17,15 @@ exports.run = async (client, msg) => {
 	});
 	if (mangaRequest.data.error) {
 		if (mangaRequest.data.error.messages[0] === 'No Results.') {
-			return msg.channel.send(':cloud: I searched for ' + searchQuery + ' and could not find anything.');
+			return msg.send(':cloud: I could not find a result for "' + searchQuery + '".');
 		}
 	}
-	if (mangaRequest.data.length === 1) {
-		let characters = await loadCharacters(mangaRequest.data[0].id, accessToken);
-		let embed = buildResponse(msg, mangaRequest.data[0], characters);
-		return msg.channel.send(embed);
-	} else if (mangaRequest.data.length > 1) {
-		let characters = await loadCharacters(mangaRequest.data[0].id, accessToken);
-		let embed = buildResponse(msg, mangaRequest.data[0], characters);
-		return msg.channel.send(embed);
+	if (mangaRequest.data.length >= 1) {
+		let characters = await client.funcs.anilistSearch.loadCharacters(mangaRequest.data[0].id, accessToken, 'manga');
+		let embed = await client.funcs.anilistSearch.buildResponse(msg, mangaRequest.data[0], characters, 'Manga');
+		return msg.send(embed);
 	} else {
-		return msg.channel.send(':cloud: I searched for ' + searchQuery + ' and could not find anything.');
-	}
-
-	async function loadCharacters(id, token) {
-		let characterRequest = await axios({
-			url: `https://anilist.co/api/manga/${id}/characters`,
-			params: { access_token: token }
-		});
-		return characterRequest.data.characters;
-	}
-
-	function buildResponse(msg, data, characters) {
-		let description = data.description.replace(/<br>/g, '');
-		description = description.replace(/\n|\\n/g, '');
-		description = description.replace(/&mdash;/g, '');
-		description = description.replace(/&#039;/g, '');
-		description = description.split('.').join('.\n\n');
-		if (description.length > 720) {
-			description = description.substring(0, 716);
-			description += '...';
-		}
-		let mainCharacters = characters.filter((c) => {
-			return c.role === 'Main';
-		});
-		let characterString = mainCharacters.map(c => {
-			return `[${c.name_first}${c.name_last ? ` ${c.name_last}` : ''}](https://anilist.co/character/${c.id})`;
-		});
-		characterString = characterString.join(', ');
-		let titleString = data.title_english !== data.title_romaji ? `${data.title_romaji} | ${data.title_english}` : data.title_romaji;
-		return {
-			embed: {
-				'title': titleString,
-				'description': description,
-				'url': `https://anilist.co/manga/${data.id}/`,
-				'color': 0x00ADFF,
-				'footer': {
-					'text': `⭐ Manga Rating: ${data.average_score}/100`
-				},
-				'image': {
-					'url': data.image_url_lge
-				},
-				'fields': [
-					{
-						'name': ':movie_camera: Genre',
-						'value': `**${data.genres.join(', ')}**`,
-						'inline': 'true'
-					},
-					{
-						'name': ':1234: # of Chapters',
-						'value': `**${data.total_chapters > 0 ? data.total_chapters : 'Unknown'}**`,
-						'inline': 'true'
-					},
-					{
-						'name': ':man_dancing: Characters',
-						'value': `**${characterString}**`
-					}
-				]
-			}
-		};
+		return msg.send(':cloud: I could not find a result for "' + searchQuery + '".');
 	}
 };
 
