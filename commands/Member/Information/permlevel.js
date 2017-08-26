@@ -22,7 +22,7 @@ exports.run = async (client, msg) => {
 		permLevel = '7 | **Chiyo Support**';
 		break;
 	case 10:
-		permLevel = '10 | **Bot Owner**';
+		permLevel = '10 | **Chiyo Developer**';
 		break;
 	default:
 		permLevel = '0 | **Guild Member**';
