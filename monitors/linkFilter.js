@@ -9,6 +9,6 @@ exports.run = (client, msg) => {
 	if (!/(https?:\/\/)?(www\.)?(discord\.(gg|li|me|io)|discordapp\.com\/invite)\/.+/.test(msg.content)) return null;
 	return msg.delete()
 		.catch((err) => {
-			this.client.emit('log', err, 'error'));
+			this.client.emit('log', err, 'error');
 		});
 };

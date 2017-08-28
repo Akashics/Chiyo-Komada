@@ -15,5 +15,6 @@ exports.update = (client) => {
 			.send({ server_count: client.guilds.size })
 			.then(console.log(`✔ Updated discord.pw listing to ${client.guilds.size}...`))
 			.catch(e => console.warn('✘ Discord.pw responded with: ' + e));
+
 	}
 };
