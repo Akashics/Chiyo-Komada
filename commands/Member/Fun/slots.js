@@ -6,12 +6,12 @@ exports.run = async (client, msg) => {
 	const slotTwo = slots[Math.floor(Math.random() * slots.length)];
 	const slotThree = slots[Math.floor(Math.random() * slots.length)];
 	if (slotOne === slotTwo && slotOne === slotThree) {
-		return msg.say(stripIndents`
+		return msg.send(stripIndents`
             ${slotOne}|${slotTwo}|${slotThree}
             Wow! You won! Great job... er... luck!
         `);
 	} else {
-		return msg.say(stripIndents`
+		return msg.send(stripIndents`
             ${slotOne}|${slotTwo}|${slotThree}
             Aww... You lost... Guess it's just bad luck, huh?
         `);

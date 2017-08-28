@@ -1,5 +1,0 @@
-exports.run = (client, msg, mes, start) => {
-    let dd = client.datadog;
-    dd.increment(msg.cmd.help.name, 1);
-    dd.increment('successcmd', 1);
-  };

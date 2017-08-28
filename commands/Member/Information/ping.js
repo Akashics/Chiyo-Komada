@@ -14,7 +14,7 @@ exports.conf = {
 	runIn: ['text'],
 	aliases: [],
 	permLevel: 0,
-	botPerms: [],
+	botPerms: ['SEND_MESSAGES'],
 	requiredFuncs: [],
 	requiredSettings: [],
 };

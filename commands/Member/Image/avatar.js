@@ -14,7 +14,7 @@ exports.conf = {
 	runIn: ['text'],
 	aliases: [],
 	permLevel: 0,
-	botPerms: ['SEND_MESSAGES'],
+	botPerms: ['SEND_MESSAGES', 'EMBED_LINKS'],
 	requiredFuncs: [],
 	cooldown: 3,
 };
