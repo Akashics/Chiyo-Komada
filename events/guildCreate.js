@@ -1,4 +1,16 @@
 exports.run = (client, guild) => {
+	/* eslint-disable no-console */
+	if (!guild.member(client.user).hasPermission('SEND_MESSAGES')) {
+		client.users.get(guild.owner.id).send('Hi, I was recently added to your guild ' + guild.name + ' and I do not have `SEND_MESSAGES` to respond to users. Please add it to avoid future charges.')
+			.catch((e) => {
+				return guild.leave().then((g) => {
+					console.log(`✘ ${g}: Left the guild due to No SEND_MESSAGES permissions.`)
+				})
+					.catch(console.error);
+			});
+		
+	}
+
 	if (guild.available) {
 		client.funcs.discordListUpdate.update(client);
 		const embed = new client.methods.Embed()
