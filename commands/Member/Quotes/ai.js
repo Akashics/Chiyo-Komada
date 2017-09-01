@@ -5,7 +5,7 @@ exports.run = async (client, msg) => {
 	var m = require('mitsuku-api')();
 	m.send(searchQuery)
 		.then(function(response){
-			msg.send(response);
+			return msg.send(response);
 		});
 
 
@@ -23,7 +23,7 @@ exports.conf = {
 
 exports.help = {
 	name: 'ai',
-	description: 'Talk with Cleverbot!',
+	description: 'Talk with Mitsuku!',
 	usage: '',
 	usageDelim: '',
 	extendedHelp: '',

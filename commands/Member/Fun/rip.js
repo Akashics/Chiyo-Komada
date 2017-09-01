@@ -3,7 +3,7 @@ exports.run = async (client, msg) => {
 };
     
 exports.conf = {
-	enabled: false,
+	enabled: true,
 	runIn: ['text'],
 	aliases: [],
 	permLevel: 0,
