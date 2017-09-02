@@ -1,7 +1,7 @@
 exports.run = async (client, msg) => {
 	const fishes = [':fish:', ':tropical_fish:', ':blowfish:', ':wrench:'];
 	const fish = fishes[Math.floor(Math.random() * fishes.length)];
-	return msg.say(`:fishing_pole_and_fish: You caught a ${fish}`);
+	return msg.send(`:fishing_pole_and_fish: You caught a ${fish}`);
 };
 
 exports.conf = {
