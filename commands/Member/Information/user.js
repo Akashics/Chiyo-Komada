@@ -1,7 +1,7 @@
 exports.run = async (client, msg, args) => {
 
 	const moment = require('moment');
-	const member = args.member || msg.member;
+	const member = args[0] || msg.member;
 	const embed = new client.methods.Embed();
 	const statuses = {
 		'online': '<:online:313956277808005120> Online',
@@ -46,7 +46,7 @@ exports.conf = {
 exports.help = {
 	name: 'user',
 	description: 'Responds with detailed information on a user.',
-	usage: '[mention:user]',
+	usage: '[member:member]',
 	usageDelim: '',
 	extendedHelp: '',
 }; 
