@@ -6,7 +6,7 @@ exports.run = async (client, msg) => {
 		.setColor(msg.guild.member(client.user.id).highestRole.color || 0)
 		.setTimestamp()
 		.setDescription('_Requested by ' + msg.author.tag + '_')
-		.setThumbnail('http://time-static-shared.s3-website-us-east-1.amazonaws.com/interactives/presidential_reading_level/img/trump.png')
+		.setThumbnail('https://www.bloomberg.com/graphics/2017-comey-vs-trump/img/trump.png')
 		.addField('\u200b', `${req.data.message}`);
 	return msg.channel.send({ embed: embed });
 };
