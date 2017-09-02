@@ -1,13 +1,12 @@
 exports.run = async (client, msg, args) => {
 	if (args.length > 25) return msg.send('Please limit the text to under 25 characters.');
 	const snekfetch = require('snekfetch');
-	const { text } = args;
 	const { body } = await snekfetch
 		.get('https://www.minecraftskinstealer.com/achievement/a.php')
 		.query({
 			i: 1,
 			h: 'Achievement Get!',
-			t: text
+			t: args
 		});
 	return msg.send({ files: [{ attachment: body, name: 'achievement.png' }] });
 };
